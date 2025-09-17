@@ -14,21 +14,21 @@ const BRAND_RED = '#E1353B'
 // Slides (cambia textos si quieres)
 const slides = [
   {
-    src: `${BASE}images/edificio4.png`,
+    src: `${BASE}images/edificio4.webp`,
     alt: 'Comunidad de propietarios',
     title: 'Administración de fincas sin complicaciones',
     text: 'Gestión integral, cuentas claras y respuesta rápida para tu comunidad.',
     cta: { label: 'Ver servicios', to: '/services' },
   },
   {
-    src: `${BASE}images/escritorio1.png`,
+    src: `${BASE}images/escritorio1.webp`,
     alt: 'Gestión y mantenimiento',
     title: 'Mantenimiento y proveedores, bajo control',
     text: 'Negociamos contratos, controlamos gastos y resolvemos incidencias.',
     cta: { label: 'Pedir presupuesto', to: '/presupuesto' },
   },
   {
-    src: `${BASE}images/edificio2.1.png`,
+    src: `${BASE}images/edificio2.1.webp`,
     alt: 'Junta de propietarios',
     title: 'Transparencia en cada decisión',
     text: 'Informes claros y comunicación directa con la administración.',

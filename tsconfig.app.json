@@ -3,7 +3,16 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
-    /* Linting */
+    /* App (Vite + Vue) */
+    "types": ["vite/client"],
+
+    /* Opcional: alias @ -> src */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* Linting (puedes ponerlos en false si no quieres tantos avisos) */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -11,5 +20,12 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.d.ts",
+    "env.d.ts",
+    "vite-env.d.ts"
+  ]
 }

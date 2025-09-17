@@ -13,7 +13,7 @@
   >
 
     <img
-        src="/images/tucomunidad.png"
+        src="/images/tucomunidad.webp"
         alt="Tu Comunidad"
         class="w-8 h-8"
     >

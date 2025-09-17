@@ -10,7 +10,7 @@
 
         <div>
           <img
-              src="/images/fincas.png"
+              src="/images/fincas.webp"
               alt="Administrador de Fincas Colegiado"
               class="rounded-lg shadow-xl w-full"
           >
@@ -24,7 +24,7 @@
           <ul class="space-y-5">
 
             <li class="flex items-start">
-              <div class="flex-shrink-0 pt-1"> <img src="/images/check.png" alt="Icono check" class="w-5 h-5 mr-3">
+              <div class="flex-shrink-0 pt-1"> <img src="/images/check.webp" alt="Icono check" class="w-5 h-5 mr-3">
               </div>
               <span class="text-gray-600 text-lg leading-relaxed">
                 Ofrece garantías de formación y conocimiento actualizado de las leyes.
@@ -33,7 +33,7 @@
 
             <li class="flex items-start">
               <div class="flex-shrink-0 pt-1">
-                <img src="/images/check.png" alt="Icono check" class="w-5 h-5 mr-3">
+                <img src="/images/check.webp" alt="Icono check" class="w-5 h-5 mr-3">
               </div>
               <span class="text-gray-600 text-lg leading-relaxed">
                 Está respaldada por el colegio profesional, lo que asegura responsabilidad, ética y gestión transparente.
@@ -42,7 +42,7 @@
 
             <li class="flex items-start">
               <div class="flex-shrink-0 pt-1">
-                <img src="/images/check.png" alt="Icono check" class="w-5 h-5 mr-3">
+                <img src="/images/check.webp" alt="Icono check" class="w-5 h-5 mr-3">
               </div>
               <span class="text-gray-600 text-lg leading-relaxed">
                 Tiene acceso a recursos y formación especializada, que permite ofrecer soluciones mas eficientes y personalizadas.

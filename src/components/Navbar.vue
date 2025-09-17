@@ -77,7 +77,7 @@ onBeforeUnmount(() => { window.removeEventListener('scroll', onScroll); observer
         <!-- LOGO integrado (sin borde/placa) -->
         <RouterLink to="/" class="flex items-center">
           <img
-              src="/images/logo-web1.png"
+              src="/images/logo-web1.webp"
               alt="Meditrade del Ebro — Logotipo"
               class="max-w-none object-contain transition-all duration-200"
               :class="scrolled ? 'h-[56px] md:h-[64px]' : 'h-[72px] md:h-[80px]'"

@@ -20,7 +20,7 @@ const BRAND_RED = '#E1353B'
         <!-- Columna 1: Marca + Social -->
         <div>
           <img
-              src="/images/logo-web1.png"
+              src="/images/logo-web1.webp"
               alt="Meditrade del Ebro — Logotipo"
               class="h-10 w-auto mb-6"
           />

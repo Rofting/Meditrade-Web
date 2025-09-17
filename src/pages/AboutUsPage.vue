@@ -9,12 +9,12 @@ const BRAND_RED = '#E1353B'
 const BASE = import.meta.env.BASE_URL || '/'
 
 const testimonials = [
-  { img: `${BASE}images/andrea.png`, name: 'Andrea López', text: 'Resolutivos y atención inmejorable.' },
-  { img: `${BASE}images/sergio.png`, name: 'Sergio', text: 'Profesionales y atentos, muy recomendables.' },
-  { img: `${BASE}images/sara.png`,   name: 'Sara', text: 'Trato cercano y profesional. Muy recomendables 😃' },
-  { img: `${BASE}images/laura.png`,  name: 'Laura', text: 'Gracias por la ayuda y la atención. 100% confianza.' },
-  { img: `${BASE}images/jorge.png`,  name: 'Jorge', text: 'Siempre receptivos y resolutivos con las incidencias.' },
-  { img: `${BASE}images/raquel.png`, name: 'Raquel G. A.', text: 'Gestión efectiva y transparente. Encantados.' },
+  { img: `${BASE}images/andrea.webp`, name: 'Andrea López', text: 'Resolutivos y atención inmejorable.' },
+  { img: `${BASE}images/sergio.webp`, name: 'Sergio', text: 'Profesionales y atentos, muy recomendables.' },
+  { img: `${BASE}images/sara.webp`,   name: 'Sara', text: 'Trato cercano y profesional. Muy recomendables 😃' },
+  { img: `${BASE}images/laura.webp`,  name: 'Laura', text: 'Gracias por la ayuda y la atención. 100% confianza.' },
+  { img: `${BASE}images/jorge.webp`,  name: 'Jorge', text: 'Siempre receptivos y resolutivos con las incidencias.' },
+  { img: `${BASE}images/raquel.webp`, name: 'Raquel G. A.', text: 'Gestión efectiva y transparente. Encantados.' },
 ]
 
 const modules = [Navigation, Pagination, A11y, Autoplay]
@@ -36,7 +36,7 @@ const modules = [Navigation, Pagination, A11y, Autoplay]
     <!-- Intro -->
     <section class="container-default">
       <div class="grid gap-8 md:grid-cols-[auto_1fr] items-start">
-        <img :src="`${BASE}images/exclamacion.png`" alt="" class="h-20 w-auto md:h-24" />
+        <img :src="`${BASE}images/exclamacion.webp`" alt="" class="h-20 w-auto md:h-24" />
         <p class="text-neutral-700">
           Gracias a nuestra dilatada experiencia como despacho profesional, resolvemos de forma
           rápida y eficaz las gestiones de tu Comunidad de Propietarios con un trato personalizado y humano,
@@ -57,7 +57,7 @@ const modules = [Navigation, Pagination, A11y, Autoplay]
           </p>
         </div>
         <div class="order-1 md:order-2">
-          <img :src="`${BASE}images/fernando.png`" alt="Fernando Piazuelo" class="w-full max-w-md rounded-2xl border border-neutral-200 bg-white shadow-sm" />
+          <img :src="`${BASE}images/fernando.webp`" alt="Fernando Piazuelo" class="w-full max-w-md rounded-2xl border border-neutral-200 bg-white shadow-sm" />
         </div>
       </div>
     </section>
@@ -133,7 +133,7 @@ const modules = [Navigation, Pagination, A11y, Autoplay]
           </div>
         </div>
         <div class="flex justify-center">
-          <img :src="`${BASE}images/mundo.png`" alt="Compromiso con el entorno" class="max-w-md w-full rounded-2xl border border-neutral-200 bg-white shadow-sm" />
+          <img :src="`${BASE}images/mundo.webp`" alt="Compromiso con el entorno" class="max-w-md w-full rounded-2xl border border-neutral-200 bg-white shadow-sm" />
         </div>
       </div>
     </section>

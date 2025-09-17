@@ -41,7 +41,7 @@ function toggle(i: number) { open.value = open.value === i ? null : i }
     <section class="container-default">
       <div class="grid gap-8 md:grid-cols-[auto_1fr] items-start">
         <img
-            :src="`${BASE}images/exclamacion.png`"
+            :src="`${BASE}images/exclamacion.webp`"
             alt="Información importante"
             class="h-20 w-auto md:h-24"
         />
@@ -138,7 +138,7 @@ function toggle(i: number) { open.value = open.value === i ? null : i }
         <!-- AHORRO -->
         <article class="rounded-2xl border border-neutral-200 bg-white p-6">
           <div class="flex items-center gap-4">
-            <img :src="`${BASE}images/cerdo.png`" alt="Ahorro" class="h-12 w-auto" />
+            <img :src="`${BASE}images/cerdo.webp`" alt="Ahorro" class="h-12 w-auto" />
             <h3 class="text-xl font-semibold">Ahorro</h3>
           </div>
           <ul class="mt-4 space-y-2 text-neutral-700">
@@ -152,7 +152,7 @@ function toggle(i: number) { open.value = open.value === i ? null : i }
         <!-- TRANQUILIDAD -->
         <article class="rounded-2xl border border-neutral-200 bg-white p-6">
           <div class="flex items-center gap-4">
-            <img :src="`${BASE}images/buda.png`" alt="Tranquilidad" class="h-12 w-auto" />
+            <img :src="`${BASE}images/buda.webp`" alt="Tranquilidad" class="h-12 w-auto" />
             <h3 class="text-xl font-semibold">Tranquilidad</h3>
           </div>
           <ul class="mt-4 space-y-2 text-neutral-700">

@@ -11,7 +11,7 @@
 
         <div>
           <img
-              src="/images/logo-bueno.jpg"
+              src="/images/logo-bueno.webp"
               alt="Logo Meditrade"
               class="rounded-lg shadow-xl w-full"
           >

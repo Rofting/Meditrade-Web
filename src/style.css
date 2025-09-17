@@ -1,9 +1,13 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
 
 /* ====== Tokens de marca (Tailwind v4 @theme) ====== */
 @theme {
     --font-sans: Roboto, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans";
     --font-serif: "Noto Serif", ui-serif, Georgia, "Times New Roman";
+    /* Colores de marca — cámbialos y afectará a toda la UI si usas las utilidades correspondientes */
     --color-brand-50: #eff6ff;
     --color-brand-100: #dbeafe;
     --color-brand-600: #2563eb;
@@ -26,7 +30,7 @@ body {
     @apply bg-neutral-950 text-neutral-100;
 }
 
-/* Contenedor utilitario para secciones (en lugar de limitar #app) */
+/* Contenedor utilitario para secciones */
 .container-default {
     @apply container mx-auto max-w-7xl px-6;
 }
@@ -41,4 +45,5 @@ body {
 .skip-link {
     @apply sr-only focus:not-sr-only fixed left-4 top-4 z-50 rounded-md bg-black/80 px-3 py-2 text-white;
 }
+
 html { scroll-behavior: smooth; }
