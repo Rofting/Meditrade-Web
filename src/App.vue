@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import Navbar from './components/Navbar.vue'; // Pieza de arriba
-import Footer from './components/Footer.vue'; // Pieza de abajo
+import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
+import FloatingButton from './components/FloatingButton.vue';
 </script>
 
 <template>
@@ -8,24 +9,25 @@ import Footer from './components/Footer.vue'; // Pieza de abajo
     <Navbar />
 
     <main>
-      <h2>Contenido del Home</h2>
-      <p>Aquí es donde construiremos la página de inicio específica.</p>
+      <router-view />
     </main>
 
     <Footer />
+    <FloatingButton />
   </div>
 </template>
 
 <style scoped>
-
+/* 3. Los estilos del layout SÍ se quedan aquí.
+*/
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ocupa al menos el 100% de la altura de la pantalla */
+  min-height: 100vh;
 }
 
 main {
-  flex: 1; /* Hace que el contenido principal crezca y ocupe el espacio */
-  padding: 2rem;
+  flex: 1;
+  padding: 0;
 }
 </style>
