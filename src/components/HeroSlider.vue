@@ -1,112 +1,115 @@
 <script setup lang="ts">
-// --- Importaciones de Swiper ---
-// Importa los componentes principales de Swiper para Vue
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination, Autoplay, EffectFade, A11y } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/effect-fade'
 
-// Importa los módulos que vamos a usar:
-// - Pagination: Los "puntitos" de abajo
-// - Autoplay: Para que pase solo
-// - EffectFade: Para el efecto "fade" que tenías
-import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+const modules = [Pagination, Autoplay, EffectFade, A11y]
+const BASE = import.meta.env.BASE_URL || '/'
 
-// --- Importa los Estilos de Swiper ---
-// Estilos base de Swiper
-import 'swiper/css';
-// Estilos para los módulos que usamos
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+// color de marca (rojo)
+const BRAND_RED = '#E1353B'
 
-// --- Configuración ---
-// Le decimos a Swiper qué módulos cargar
-const modules = [Pagination, Autoplay, EffectFade];
-
-// Datos de tus slides (del inicio.html)
-// Así es más limpio: si quieres otra slide, solo la añades aquí.
+// Slides (cambia textos si quieres)
 const slides = [
   {
-    img: '/images/edificio4.png',
-    titleLine1: 'Meditrade del Ebro',
-    titleLine2: 'Administradores de',
-    titleLine3: 'Fincas en Zaragoza',
+    src: `${BASE}images/edificio4.png`,
+    alt: 'Comunidad de propietarios',
+    title: 'Administración de fincas sin complicaciones',
+    text: 'Gestión integral, cuentas claras y respuesta rápida para tu comunidad.',
+    cta: { label: 'Ver servicios', to: '/services' },
   },
   {
-    img: '/images/escritorio1.png',
-    titleLine1: 'Meditrade del Ebro',
-    titleLine2: 'Administradores de',
-    titleLine3: 'Fincas en Zaragoza',
+    src: `${BASE}images/escritorio1.png`,
+    alt: 'Gestión y mantenimiento',
+    title: 'Mantenimiento y proveedores, bajo control',
+    text: 'Negociamos contratos, controlamos gastos y resolvemos incidencias.',
+    cta: { label: 'Pedir presupuesto', to: '/presupuesto' },
   },
   {
-    img: '/images/edificio2.1.png',
-    titleLine1: 'Meditrade del Ebro',
-    titleLine2: 'Administradores de',
-    titleLine3: 'Fincas en Zaragoza',
+    src: `${BASE}images/edificio2.1.png`,
+    alt: 'Junta de propietarios',
+    title: 'Transparencia en cada decisión',
+    text: 'Informes claros y comunicación directa con la administración.',
+    cta: { label: 'Contactar', to: '/#contacto' },
   },
-];
+]
+
+// reduce motion
+const prefersReduced =
+    typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+const autoplay = prefersReduced ? false : { delay: 5000, disableOnInteraction: false }
+const effect = 'fade'
+
+function go(to: string) {
+  if (to.startsWith('/#')) {
+    const id = to.split('#')[1]
+    history.replaceState(null, '', `#${id}`)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  } else {
+    window.location.href = to
+  }
+}
 </script>
 
 <template>
-  <section class="relative w-full h-[50vh] md:h-[80vh]">
-    <swiper
+  <div class="absolute inset-0 z-0 w-full h-full" :style="{ '--brand-red': BRAND_RED }">
+    <Swiper
         :modules="modules"
-        :slides-per-view="1"
         :loop="true"
-        :effect="'fade'"
         :pagination="{ clickable: true }"
-        :autoplay="{
-        delay: 5000,
-        disableOnInteraction: false,
-      }"
+        :a11y="{ enabled: true }"
+        :autoplay="autoplay"
+        :effect="effect"
         class="w-full h-full"
     >
-      <swiper-slide v-for="(slide, index) in slides" :key="index">
-        <div class="w-full h-full relative">
-          <img
-              :src="slide.img"
-              :alt="'Slide ' + (index + 1)"
-              class="w-full h-full object-cover"
-          />
-          <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <SwiperSlide v-for="(s, i) in slides" :key="i">
+        <div class="relative w-full h-full">
+          <img :src="s.src" :alt="s.alt" class="w-full h-full object-cover" loading="eager" decoding="async" />
 
-          <div class="absolute inset-0 flex flex-col justify-center items-start text-white p-8 md:p-16 lg:p-24">
-
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-light uppercase">
-              {{ slide.titleLine1 }}
-              <b class="font-bold block">{{ slide.titleLine2 }}</b>
-              <b class="font-bold block">{{ slide.titleLine3 }}</b>
-            </h1>
-
-            <a href="about-us.html">
-              <button class="mt-6 bg-blue-600 text-white font-semibold py-3 px-8 rounded-full text-lg
-                             hover:bg-blue-700 transition-colors duration-300
-                             focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                Conócenos
-              </button>
-            </a>
+          <div class="pointer-events-none absolute inset-0">
+            <!-- aclarado lateral derecho ocupando 50% -->
+            <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-white/75 via-white/25 to-transparent"></div>
+            <!-- sombreado inferior suave -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
           </div>
+
+          <div class="absolute inset-0 z-20">
+            <div class="container-default h-full">
+              <div class="flex h-full items-center justify-end">
+                <div
+                    class="w-full text-center md:text-right
+               md:w-8/12 lg:w-7/12 xl:w-6/12 2xl:w-5/12
+               pr-0 md:pr-0 xl:mr-[-24px] 2xl:mr-[-56px]"
+                >
+                  <h2 class="text-3xl md:text-5xl font-bold leading-tight text-[var(--brand-red)]">
+                    {{ s.title }}
+                  </h2>
+                  <p class="mt-4 text-base md:text-lg text-neutral-800 md:text-neutral-900/80">
+                    {{ s.text }}
+                  </p>
+                  <div class="mt-6 flex gap-3 justify-center md:justify-end">
+                    <button
+                        v-if="s.cta"
+                        @click="go(s.cta.to)"
+                        class="rounded-xl bg-[var(--brand-red)] px-5 py-3 font-semibold text-white hover:opacity-90 transition"
+                    >
+                      {{ s.cta.label }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </swiper-slide>
-    </swiper>
-  </section>
+      </SwiperSlide>
+    </Swiper>
+  </div>
 </template>
 
 <style scoped>
-/* Podemos usar 'scoped' para modificar los estilos de Swiper
-que son difíciles de cambiar con Tailwind.
-Aquí hacemos que los "puntitos" de paginación
-sean cuadrados, ¡solo como ejemplo de personalización!
-*/
-
-:deep(.swiper-pagination-bullet) {
-  width: 12px;
-  height: 12px;
-  background-color: white;
-  opacity: 0.7;
-  border-radius: 0; /* Quitamos el borde redondeado */
-}
-
-:deep(.swiper-pagination-bullet-active) {
-  background-color: #007bff; /* Azul (puedes cambiarlo) */
-  opacity: 1;
-  transform: scale(1.1);
-}
+:global(.swiper-pagination-bullet){ width:10px; height:10px; opacity:.5; }
+:global(.swiper-pagination-bullet-active){ opacity:1; }
 </style>

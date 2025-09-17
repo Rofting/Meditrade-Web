@@ -1,23 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
-// 1. Importa la página que vamos a crear
-// (No te preocupes si WebStorm lo marca en rojo, aún no la hemos creado)
-import HomePage from '../pages/HomePage.vue';
+// Code-splitting: carga bajo demanda de la página
+const HomePage = () => import('../pages/HomePage.vue')
+const ServicesPage = () => import('../pages/ServicesPage.vue')
+const AboutUsPage = () => import('../pages/AboutUsPage.vue')
 
-// 2. Define las rutas
 const routes = [
-    {
-        path: '/', // La URL raíz
-        name: 'Home',
-        component: HomePage, // El componente que se cargará
-    },
-    // (Aquí añadiremos '/conocenos', '/contacto', etc. en el futuro)
-];
+    { path: '/', name: 'Home', component: HomePage },
+    { path: '/services', name: 'Services', component: ServicesPage, meta: { title: 'Servicios – Meditrade' } },
+    { path: '/about', name: 'About', component: AboutUsPage, meta: { title: 'Conócenos – Meditrade del Ebro' } }
+]
 
-// 3. Crea la instancia del router
 const router = createRouter({
     history: createWebHistory(),
     routes,
-});
+    scrollBehavior() {
+        return { top: 0 }
+    },
+})
 
-export default router;
+export default router

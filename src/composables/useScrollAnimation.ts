@@ -1,40 +1,62 @@
-import { ref, computed } from 'vue'
-import { useIntersectionObserver } from '@vueuse/core'
+// src/composables/useScrollAnimation.ts
+import { ref, computed, onMounted, onBeforeUnmount, type Ref } from 'vue'
 
-// Exportamos nuestra nueva función "composable"
-export function useScrollAnimation() {
-    // 1. 'target' es el elemento del DOM que queremos observar
-    const target = ref<any>(null)
+export type UseScrollAnimationOptions = {
+    threshold?: number | number[]
+    root?: Element | null
+    rootMargin?: string
+    /** Si true, se queda visible una vez intersecta; si false, alterna visible/oculto */
+    once?: boolean
+}
 
-    // 2. 'isVisible' rastrea si ya lo hemos visto
+export function useScrollAnimation(opts: UseScrollAnimationOptions = {}) {
+    const {
+        threshold = 0.1,
+        root = null,
+        rootMargin = '0px',
+        once = true,
+    } = opts
+
+    const target: Ref<HTMLElement | null> = ref(null)
     const isVisible = ref(false)
+    let observer: IntersectionObserver | null = null
 
-    // 3. 'useIntersectionObserver' es la magia de @vueuse/core
-    const { stop } = useIntersectionObserver(
-        target,
-        // 4. Callback que se dispara cuando cambia la visibilidad
-        ([{ isIntersecting }]) => {
-            // 5. 'isIntersecting' es true si el elemento está en pantalla
-            if (isIntersecting) {
-                isVisible.value = true // Lo marcamos como visible
-                stop() // Y dejamos de observar (la animación es solo 1 vez)
-            }
-        },
-        // 6. Opciones: se dispara cuando el 10% del elemento es visible
-        { threshold: 0.1 }
-    )
+    onMounted(() => {
+        const prefersReduced =
+            typeof window !== 'undefined' &&
+            window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
-    // 7. Creamos las clases de Tailwind dinámicas
+        // Si no hay IO o el usuario prefiere menos movimiento: sin animación
+        if (prefersReduced || typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+            isVisible.value = true
+            return
+        }
+
+        observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    isVisible.value = true
+                    if (once && observer && target.value) observer.unobserve(target.value)
+                } else if (!once) {
+                    isVisible.value = false
+                }
+            },
+            { threshold, root, rootMargin },
+        )
+
+        if (target.value) observer.observe(target.value)
+    })
+
+    onBeforeUnmount(() => {
+        observer?.disconnect()
+        observer = null
+    })
+
+    // Clases performantes (opacity/transform)
     const animationClasses = computed(() => [
-        'transition-all duration-700 ease-out', // La transición
-        isVisible.value
-            ? 'opacity-100 translate-y-0' // Estado final (visible)
-            : 'opacity-0 translate-y-10'  // Estado inicial (invisible y 10px abajo)
+        'transition-all duration-700 ease-out will-change-transform',
+        isVisible.value ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10',
     ])
 
-    // 8. Devolvemos las variables que el componente necesitará
-    return {
-        target,
-        animationClasses
-    }
+    return { target, isVisible, animationClasses }
 }

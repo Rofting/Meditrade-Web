@@ -6,9 +6,10 @@ import FloatingButton from './components/FloatingButton.vue';
 
 <template>
   <div class="app-container">
+    <a href="#content" class="skip-link">Saltar al contenido</a>
     <Navbar />
 
-    <main>
+    <main id="content" class="min-h-[70vh]">
       <router-view />
     </main>
 
