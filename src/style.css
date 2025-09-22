@@ -1,49 +1,107 @@
 @import "tailwindcss";
+/* Si usas estos plugins, déjalos aquí (instalados): */
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
-
-/* ====== Tokens de marca (Tailwind v4 @theme) ====== */
+/* ====== TOKENS (Tailwind v4 @theme) ====== */
 @theme {
-    --font-sans: Roboto, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans";
+    --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans";
     --font-serif: "Noto Serif", ui-serif, Georgia, "Times New Roman";
-    /* Colores de marca — cámbialos y afectará a toda la UI si usas las utilidades correspondientes */
-    --color-brand-50: #eff6ff;
-    --color-brand-100: #dbeafe;
-    --color-brand-600: #2563eb;
-    --color-brand-700: #1d4ed8;
+
+    /* === ROJO CORPORATIVO === */
+    /* HEX: #e0383b  | RGB: 225,53,59 */
+    --color-brand-50:  #FFE6E7;
+    --color-brand-100: #FFCBCD;
+    --color-brand-200: #FF9FA3;
+    --color-brand-300: #F7757A;
+    --color-brand-400: #EF5056;
+    --color-brand-500: #E63F44;
+    --color-brand-600: #e0383b; /* principal */
+    --color-brand-700: #C73135;
+    --color-brand-800: #A3292D;
+    --color-brand-900: #7F2125;
+
+    /* === AZUL CORPORATIVO === */
+    /* HEX: #073a78 | RGB: 7,59,122 */
+    --color-accent-50:  #E6EEF8;
+    --color-accent-100: #C8DAF1;
+    --color-accent-200: #9CBCE6;
+    --color-accent-300: #6E9CD6;
+    --color-accent-400: #3E78C2;
+    --color-accent-500: #1F5CA5;
+    --color-accent-600: #073a78; /* secundario */
+    --color-accent-700: #06315F;
+    --color-accent-800: #052847;
+    --color-accent-900: #041E34;
+
+    /* Semánticos */
+    --color-bg:       #FFFFFF;
+    --color-surface:  #FFFFFF;
+    --color-text:     #0A0A0A;
+    --color-muted:    #6B7280;
+    --color-border:   #E5E7EB;
+
     --radius-card: 1.25rem;
-    --shadow-card: 0 10px 30px rgba(0,0,0,.08);
+    --shadow-card: 0 10px 30px rgba(0,0,0,.07);
 }
 
-/* ====== Reset mínimo y superficies ====== */
+:root.dark {
+    --color-bg:      #0B0B0B;
+    --color-surface: #111213;
+    --color-text:    #F3F4F6;
+    --color-muted:   #D1D5DB;
+    --color-border:  #26292B;
+}
+
+/* ====== BASE ====== */
 html, body, #app { min-height: 100%; }
-body { font-family: var(--font-sans); }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+}
 .h-title { font-family: var(--font-serif); }
 
-/* Light/Dark por clase .dark en <html> (modo manual o con preferencia del SO) */
-:root { color-scheme: light dark; }
-body {
-    @apply bg-white text-neutral-900 antialiased;
-}
-.dark body {
-    @apply bg-neutral-950 text-neutral-100;
-}
-
-/* Contenedor utilitario para secciones */
-.container-default {
-    @apply container mx-auto max-w-7xl px-6;
-}
+/* Contenedores/secciones */
+.container-default { @apply container mx-auto max-w-7xl px-6; }
+.section { @apply py-20 md:py-28; }
 
 /* Cartas/CTAs */
-.card {
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-}
+.card { border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
 
-/* Accesibilidad: enlace de salto al contenido */
-.skip-link {
-    @apply sr-only focus:not-sr-only fixed left-4 top-4 z-50 rounded-md bg-black/80 px-3 py-2 text-white;
-}
+/* Enlace de salto accesible */
+.skip-link { @apply sr-only focus:not-sr-only fixed left-4 top-4 z-50 rounded-md bg-black/80 px-3 py-2 text-white; }
 
-html { scroll-behavior: smooth; }
+/* ====== TIPOGRAFÍA UTILITARIA ====== */
+.h1 { @apply text-4xl md:text-5xl font-bold tracking-tight; }
+.h2 { @apply text-3xl md:text-4xl font-semibold; }
+.h3 { @apply text-2xl font-semibold; }
+.lead { @apply text-lg text-neutral-600 dark:text-neutral-300; }
+
+/* ====== LINE-CLAMP (sustituto del plugin) ====== */
+.line-clamp-1, .line-clamp-2, .line-clamp-3, .line-clamp-4 {
+    display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;
+}
+.line-clamp-1 { -webkit-line-clamp: 1; }
+.line-clamp-2 { -webkit-line-clamp: 2; }
+.line-clamp-3 { -webkit-line-clamp: 3; }
+.line-clamp-4 { -webkit-line-clamp: 4; }
+/* === Reveal: estados y direcciones === */
+.reveal-init { opacity: 0; transform: translateY(14px); }
+.reveal-in   { opacity: 1; transform: none; transition: opacity .5s ease, transform .6s ease; }
+
+[data-reveal="up"].reveal-init    { transform: translateY(14px); }
+[data-reveal="down"].reveal-init  { transform: translateY(-14px); }
+[data-reveal="left"].reveal-init  { transform: translateX(16px); }
+[data-reveal="right"].reveal-init { transform: translateX(-16px); }
+[data-reveal="zoom"].reveal-init  { transform: scale(.97); }
+[data-reveal="fade"].reveal-init  { transform: none; }
+
+/* Stagger sencillo por hijos */
+.reveal-stagger > * { transition-delay: .02s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: .06s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: .10s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: .14s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: .18s; }
+
