@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title>Proveedores y contratos</title>
+  <desc>Iconografía de contrato, apretón de manos y gráfico de rendimiento.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"></stop>
+      <stop offset="100%" stop-color="#EEF2F7"></stop>
+    </linearGradient>
+    <style>
+      .stroke-blue { stroke:#073A78; }
+      .fill-blue   { fill:#073A78; }
+      .stroke-red  { stroke:#E1353B; }
+      .fill-red    { fill:#E1353B; }
+      .stroke-dark { stroke:#0A0A0A; }
+      .round { stroke-linecap:round; stroke-linejoin:round; }
+    </style>
+  </defs>
+
+  <!-- Fondo suave -->
+  <rect x="0" y="0" width="1200" height="800" fill="url(#bg)"></rect>
+
+  <!-- Tarjeta principal -->
+  <g transform="translate(120,110)">
+    <rect x="0" y="0" width="960" height="580" rx="28" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"></rect>
+
+    <!-- Columna izquierda: contrato y gráfico -->
+    <g transform="translate(60,60)">
+      <!-- Hoja / contrato -->
+      <rect x="0" y="0" width="360" height="440" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"></rect>
+      <!-- Cabecera hoja -->
+      <rect x="0" y="0" width="360" height="64" rx="16" fill="#F3F4F6"></rect>
+      <circle cx="36" cy="32" r="8" class="fill-red"></circle>
+      <circle cx="60" cy="32" r="8" class="fill-blue"></circle>
+      <rect x="96" y="22" width="220" height="20" rx="10" fill="#E5E7EB"></rect>
+
+      <!-- Líneas del contrato -->
+      <g class="stroke-dark round" stroke-width="3" opacity="0.8">
+        <line x1="28" y1="100" x2="332" y2="100"></line>
+        <line x1="28" y1="132" x2="292" y2="132"></line>
+        <line x1="28" y1="164" x2="332" y2="164"></line>
+        <line x1="28" y1="196" x2="292" y2="196"></line>
+        <line x1="28" y1="228" x2="332" y2="228"></line>
+      </g>
+
+      <!-- Sello / check de cumplimiento -->
+      <g transform="translate(240,260)">
+        <circle cx="48" cy="48" r="48" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="2"></circle>
+        <path d="M26 50l16 16 28-30" class="stroke-red round" stroke-width="6" fill="none"></path>
+      </g>
+
+      <!-- Gráfico de barras con tendencia (indicadores) -->
+      <g transform="translate(20,350)">
+        <rect x="0" y="70" width="28" height="70" rx="6" class="fill-blue" opacity="0.25"></rect>
+        <rect x="48" y="40" width="28" height="100" rx="6" class="fill-blue" opacity="0.35"></rect>
+        <rect x="96" y="20" width="28" height="120" rx="6" class="fill-blue" opacity="0.55"></rect>
+        <rect x="144" y="8" width="28" height="132" rx="6" class="fill-blue"></rect>
+
+        <!-- Línea de tendencia -->
+        <path d="M-6,118 C30,108 78,80 126,48 146,36 170,18 190,8" fill="none" class="stroke-red round" stroke-width="5"></path>
+        <polygon points="190,8 182,20 200,16" class="fill-red"></polygon>
+      </g>
+    </g>
+
+    <!-- Columna derecha: apretón de manos (negociación) -->
+    <g transform="translate(500,160)" class="round" fill="none" stroke-width="6">
+      <!-- Brazos -->
+      <path d="M10,40 C90,10 150,6 220,36" class="stroke-blue"></path>
+      <path d="M350,40 C280,10 220,6 150,36" class="stroke-red"></path>
+
+      <!-- Manos (estilo flat) -->
+      <g class="stroke-dark">
+        <path d="M150,40 l24,18 c10,8 26,8 36,0 l24,-18" stroke="#0A0A0A" fill="#F9FAFB"></path>
+        <!-- Dedos -->
+        <path d="M160,58 l14,10" stroke="#0A0A0A"></path>
+        <path d="M174,66 l14,10" stroke="#0A0A0A"></path>
+        <path d="M188,74 l14,10" stroke="#0A0A0A"></path>
+      </g>
+
+      <!-- Tachuela/estrella de acuerdo -->
+      <g transform="translate(210,-40)">
+        <circle cx="0" cy="0" r="16" class="fill-red"></circle>
+        <path d="M-6,-2 l4,4 8,-8" stroke="#fff" stroke-width="3" fill="none" class="round"></path>
+      </g>
+    </g>
+
+    <!-- Título dentro de la tarjeta -->
+    <g transform="translate(60,520)">
+      <text x="0" y="0" font-size="28" font-family="Roboto, Arial, sans-serif" fill="#0A0A0A" font-weight="700">
+        Proveedores y contratos
+      </text>
+      <text x="0" y="36" font-size="18" font-family="Roboto, Arial, sans-serif" fill="#475569">
+        Selección objetiva, negociación y desempeño medido con indicadores.
+      </text>
+    </g>
+  </g>
+</svg>
