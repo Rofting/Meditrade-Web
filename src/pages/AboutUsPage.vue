@@ -7,6 +7,7 @@ import 'swiper/css/pagination'
 
 const BRAND_RED = '#E1353B'
 const BASE = import.meta.env.BASE_URL || '/'
+//fdf
 
 const testimonials = [
   { img: `${BASE}images/andrea.webp`, name: 'Andrea López', text: 'Resolutivos y atención inmejorable.' },
