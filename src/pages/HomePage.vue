@@ -88,15 +88,15 @@ onMounted(() => {
   </section>
 
   <!-- Resto de secciones -->
-  <div id="servicios" class="py-20 md:py-28">
-    <div class="container-default" v-reveal>
-      <ServicesSection />
-    </div>
-  </div>
-
   <div id="nosotros" class="py-20 md:py-28 bg-neutral-50 dark:bg-neutral-900/40">
     <div class="container-default" v-reveal="'up'">
       <AboutUsSection />
+    </div>
+  </div>
+
+  <div id="servicios" class="py-20 md:py-28">
+    <div class="container-default" v-reveal>
+      <ServicesSection />
     </div>
   </div>
 
