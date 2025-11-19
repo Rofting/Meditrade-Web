@@ -16,15 +16,18 @@ async function downloadPdf() {
   const el = contentRef.value
   if (!el) return
 
+  // Usamos "any" para evitar el error de TypeScript con la propiedad "pagebreak"
+  const options: any = {
+    margin: 12,
+    filename: 'Aviso-Legal-Meditrade.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] },
+  }
+
   await html2pdf()
-      .set({
-        margin: 12,
-        filename: 'Aviso-Legal-Meditrade.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'] },
-      })
+      .set(options)
       .from(el)
       .save()
 }
@@ -70,7 +73,10 @@ async function downloadPdf() {
     <section class="container-default py-10">
       <div class="grid gap-10 lg:grid-cols-[280px_1fr]" ref="contentRef">
         <!-- Índice (oculto al imprimir) -->
-        <nav class="lg:sticky lg:top-24 h-max rounded-2xl border border-neutral-200 bg-white p-4 print:hidden" data-h2pdf-ignore>
+        <nav
+            class="lg:sticky lg:top-24 h-max rounded-2xl border border-neutral-200 bg-white p-4 print:hidden"
+            data-h2pdf-ignore
+        >
           <p class="text-sm font-semibold text-neutral-700">Contenido</p>
           <ol class="mt-3 space-y-2 text-sm">
             <li><a href="#info"      class="hover:underline">Información general</a></li>
@@ -98,7 +104,6 @@ async function downloadPdf() {
               *Datos colegiales (si aplican): Colegio de Administradores de Fincas · Título de Administrador de Fincas ·
               Estado de expedición: España · Normativa profesional: normas del colegio.
             </p>
-            <!-- Si en el futuro añades inscripción registral, colócala aquí -->
           </section>
 
           <!-- Condiciones de uso -->

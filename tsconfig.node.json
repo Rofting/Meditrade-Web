@@ -14,7 +14,7 @@
     "noEmit": true,
 
     /* Tipos para Node/Vercel */
-    "types": ["node", "@vercel/node"],
+    "types": ["node"],
 
     /* Linting */
     "strict": true,
@@ -27,7 +27,6 @@
     "skipLibCheck": true
   },
   "include": [
-    "vite.config.ts",
-    "api/**/*.ts"     // 👈 añade tus endpoints serverless
+    "vite.config.ts"
   ]
 }

@@ -30,6 +30,7 @@
     "src/**/*.vue",
     "src/**/*.d.ts",
     "env.d.ts",
-    "vite-env.d.ts"
+    "vite-env.d.ts",
+    "shims-modules.d.ts"
   ]
 }
